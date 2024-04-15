@@ -5,6 +5,7 @@ import LineR from '../components/Charts/revenus/LineR';
 
 import DefaultLayout from '../layout/DefaultLayout';
 import BarChart from '../components/Charts/revenus/BarChart';
+import HeatmapLTV from '../components/Charts/revenus/heatmapLTV';
 
 
 const ECommerce: React.FC = () => {
@@ -18,7 +19,7 @@ const ECommerce: React.FC = () => {
       </div>
 
       <div className="mt-4 grid grid-cols-12 gap-4 md:mt-6 md:gap-6 2xl:mt-7.5 2xl:gap-7.5">
-       
+       <HeatmapLTV/>
         <BarChart/>
        <LineR/>
       

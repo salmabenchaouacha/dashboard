@@ -2,6 +2,7 @@ import { ApexOptions } from 'apexcharts';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import DateFilter from '../DateFilter';
+
 const options: ApexOptions = {
   // ... (same options as before)
  
@@ -10,7 +11,7 @@ const options: ApexOptions = {
       position: 'top',
       horizontalAlign: 'left',
     },
-    colors: [ '#a3e635'],
+    colors: ['#c4b5fd','#fda4af' ,'#a3e635'],
    
    
   }
@@ -23,15 +24,17 @@ interface LineChartState {
   }[];
 }
 
-const LineChart: React.FC = () => {
+const TauxLine: React.FC = () => {
 
   const [state, setState] = useState<LineChartState>({
     series: [
       {
-        name: 'Le nombre des abonnés',
+        name: 'Le taux de désabonnement ',
         data: [31, 40, 28, 51, 42, 109, 100],
       },
+     
       
+    
     ],
   });
 
@@ -43,15 +46,12 @@ const LineChart: React.FC = () => {
       <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
           <h4 className="text-xl font-semibold text-black dark:text-white">
-          Les variations du nombre d'abonnés au fil du temps : 
+          L'évolution du taux de désabonnement  au fil du temps : 
           </h4>
-          
         </div>
         <div>
-        <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
-        
-         <DateFilter/>
-      
+          <div className="relative z-20 inline-block">
+           <DateFilter/>
            
           </div>
         </div>
@@ -59,9 +59,18 @@ const LineChart: React.FC = () => {
       </div>
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
      
-     
+        <div className="flex w-full flex-wrap gap-3 sm:gap-5">
+          <div  className="flex min-w-100">
+            
+           
+          </div>
+         
+        </div>
         
-     
+        
+      </div>
+      <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
+        
         
       </div>
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
@@ -81,4 +90,4 @@ const LineChart: React.FC = () => {
   );
 };
 
-export default LineChart;
+export default TauxLine;

@@ -1,7 +1,8 @@
 import { ApexOptions } from 'apexcharts';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-
+import DateFilter from '../DateFilter';
+import OptionsFiltter from '../OptionsFilter';
 const options: ApexOptions = {
   colors: ['#93c5fd','#ccfbf1'],
   chart: {
@@ -46,7 +47,7 @@ const options: ApexOptions = {
 
   xaxis: {
     
-    categories: [ ' le nombre total des abonnés ', 'les nouveaux abonnements','les annulations','le taux de désabonnement' ],
+    categories: [ ' le nombre total des abonnés ', 'les nouveaux abonnements','les annulations' ],
   },
   legend: {
     position: 'top',
@@ -77,7 +78,7 @@ const ChartTwo: React.FC = () => {
     
       {
         name: '',
-        data: [13, 23, 20, 8],
+        data: [13, 23, 20],
       },
     ],
   });
@@ -90,7 +91,7 @@ const ChartTwo: React.FC = () => {
   handleReset;  
 
   return (
-    <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-10">
+    <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-14">
       
       <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
@@ -100,8 +101,8 @@ const ChartTwo: React.FC = () => {
         </div>
         <div>
           <div className="relative z-20 inline-block">
-           
-           
+          <OptionsFiltter/>
+          
           </div>
         </div>
       </div>
