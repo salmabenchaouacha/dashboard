@@ -1,0 +1,69 @@
+import React, { useState } from 'react';
+import ReactApexChart from 'react-apexcharts';
+
+const HeatMap: React.FC = () => {
+  const [series, setSeries] = useState([
+    { name: 'Metric1', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Metric2', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Metric3', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Metric4', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Metric5', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Metric6', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Metric7', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Metric8', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Metric9', data: generateData(18, { min: 0, max: 90 }) }
+  ]);
+
+  const options = {
+    chart: {
+      height: 350,
+      type: 'heatmap',
+    },
+    dataLabels: {
+      enabled: false
+    },
+    colors: ["#a5b4fc"],
+    title: {
+      text: 'HeatMap Chart (Single color)'
+    },
+  };
+
+  const handleReset = () => {
+    setSeries((prevSeries) => prevSeries); // Pourquoi resetter le state à lui-même ?
+  };
+
+  return (
+    <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-14">
+      <div className="mb-4 justify-between gap-4 sm:flex">
+        <div>
+          <h4 className="text-xl font-semibold text-black dark:text-white">
+            La répartition des abonnements par fréquence de facturation :
+          </h4>
+        </div>
+        <div>
+          <div className="relative z-20 inline-block"></div>
+        </div>
+      </div>
+   
+      <div>
+        <div id="chartOne" className="-ml-5">
+          <ReactApexChart options={options} series={series} type="heatmap" height={350} />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default HeatMap;
+
+function generateData(count: number, yrange: { min: number, max: number }) {
+  let i = 0;
+  const series = [];
+  while (i < count) {
+    const x = 'w' + (i + 1).toString();
+    const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+    series.push({ x, y });
+    i++;
+  }
+  return series;
+}
