@@ -96,8 +96,8 @@ const BarChart: React.FC = () => {
       </div>
       
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
-        <div>
-          <div id="chartTwo"  className="-ml-1"  >
+        <div style={{ width: '120%' }}> {/* Utilisation des styles inline pour étirer le graphique */}
+          <div id="chartTwo" className="-ml-1">
             <ReactApexChart
               options={options}
               series={series}

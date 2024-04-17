@@ -1,9 +1,11 @@
 import { ApexOptions } from 'apexcharts';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import FacturationFilter from '../FacturationFilter';
+import DateFilter from '../DateFilter';
 
 const options: ApexOptions = {
-  // ... (same options as before)
+  // ... (mêmes options qu'avant)
  
     legend: {
       show: false,
@@ -37,30 +39,27 @@ const LineR: React.FC = () => {
     ],
   });
 
-  // ... (same handleReset function as before)
+  // ... (même fonction handleReset qu'avant)
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
-      {/* ... (same header as before) */}
-      <div className="mb-4 justify-between gap-4 sm:flex">
+      {/* Titre et filtres */}
+      <div className="mb-4 justify-between gap-4 sm:flex items-center">
         <div>
           <h4 className="text-xl font-semibold text-black dark:text-white">
-          Les tendances des revenus au fil du temps: 
+            Les tendances des revenus générés par les abonnements : 
           </h4>
-        </div>
-        <div>
-          <div className="relative z-20 inline-block">
-           
-           
-          </div>
-        </div>
-        
-      </div>
-     
-        
+         
+          <FacturationFilter />
       
+        </div>
+        <div className="relative z-40 inline-block">
+            <DateFilter/>
+          </div>
+      </div>
+      {/* Chart */}
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
-        {/* ... (same chart legend as before) */}
+        {/* ... (même légende de graphique qu'avant) */}
       </div>
       <div>
         <div id="chartTwo" className="-ml-5">

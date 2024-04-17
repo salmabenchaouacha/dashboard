@@ -36,7 +36,7 @@ const options: ApexOptions = {
     bar: {
       horizontal: false,
       borderRadius: 0,
-      columnWidth: '25%',
+      columnWidth: '20%',
       borderRadiusApplication: 'end',
       borderRadiusWhenStacked: 'last',
     },
@@ -108,15 +108,18 @@ const ChartTwo: React.FC = () => {
       </div>
 
       <div>
+      
         <div id="chartTwo" className="-ml-5 -mb-9">
+        
           <ReactApexChart
             options={options}
             series={state.series}
             type="bar"
             height={350}
           />
+          </div>
         </div>
-      </div>
+      
     </div>
     
   );

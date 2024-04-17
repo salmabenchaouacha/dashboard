@@ -5,7 +5,7 @@ import Loader from './common/Loader';
 import PageTitle from './components/PageTitle';
 import SignIn from './pages/Authentication/SignIn';
 import SignUp from './pages/Authentication/SignUp';
-
+import PerformanceAb from './pages/PerformanceAb';
 import Chart from './pages/Chart';
 import Retention from './pages/Retention';
 
@@ -72,6 +72,15 @@ function App() {
             <>
               <PageTitle title="Retention et desabonnement| TailAdmin - Tailwind CSS Admin Dashboard Template" />
               <Retention />
+            </>
+          }
+        />
+         <Route
+          path="/PerformanceAb"
+          element={
+            <>
+              <PageTitle title="Retention et desabonnement| TailAdmin - Tailwind CSS Admin Dashboard Template" />
+              <PerformanceAb />
             </>
           }
         />

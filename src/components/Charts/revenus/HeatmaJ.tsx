@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 
 
-const HeatmapLTV = () => {
+const HeatmapJ = () => {
   const [series, setSeries] = useState([
-    { name: 'ARPU', data: generateData(18, { min: 0, max: 90 }) },
-    { name: 'LTV', data: generateData(18, { min: 0, max: 90 }) },
-  
-   
+    { name: 'Tawer ', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Mou7a9i9', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Esports', data: generateData(18, { min: 0, max: 90 }) },
+    { name: 'Rafi9ni', data: generateData(18, { min: 0, max: 90 }) },
   ]);
+
 
   const options = {
     chart: {
@@ -20,7 +21,7 @@ const HeatmapLTV = () => {
     dataLabels: {
       enabled: false
     },
-    colors: ["#a5b4fc","#fca5a5"],
+    colors: ["#fecdd3","#a5f3fc","#bef264","#f0abfc"],
     
   };
 
@@ -29,7 +30,7 @@ const HeatmapLTV = () => {
       <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
           <h4 className="text-xl font-semibold text-black dark:text-white">
-            La répartition des abonnements par fréquence de facturation :
+            Comparaison des revenus des services suivant le plan d'abonnement journalier :
           </h4>
         </div>
         <div>
@@ -51,12 +52,13 @@ const generateData = (count, yrange) => {
   let i = 0;
   const series = [];
   while (i < count) {
-    const x = 'w' + (i + 1).toString();
+    const x =  (i + 1).toString();
     const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
     series.push({ x, y });
     i++;
   }
   return series;
+
 };
 
-export default HeatmapLTV;
+export default HeatmapJ;

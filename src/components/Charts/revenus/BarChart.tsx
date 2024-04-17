@@ -5,12 +5,11 @@ import ReactApexChart from 'react-apexcharts';
 const BarChart: React.FC = () => {
   const [series, setSeries] = useState([
     {
-      name: 'Les revenus  par fréquence  de facturation quotidienne',
+      name: 'Le taux de rétention des abonnés quotidiens ',
       data: [44]
-      
     },
     {
-      name: 'Les revenus  par fréquence de facturation hebdomadaire',
+      name: '  Le taux de rétention des abonnés hebdomadaires',
       data: [76]
     },
    
@@ -37,7 +36,7 @@ const BarChart: React.FC = () => {
       colors: ['transparent']
     },
     xaxis: {
-      categories: ['Feb'],
+      categories: [''],
     },
     yaxis: {
       title: {
@@ -67,7 +66,7 @@ const BarChart: React.FC = () => {
       <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
           <h4 className="text-xl font-semibold text-black dark:text-white">
-           Les revenus générés par les abonnements, répartis par fréquence de facturation:
+          Les taux de rétention des abonnés quotidiens et hebdomadaires:
           </h4>
         </div>
         <div>
@@ -97,7 +96,7 @@ const BarChart: React.FC = () => {
       </div>
       
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
-        <div>
+        <div style={{ width: '120%' }}> {/* Utilisation des styles inline pour étirer le graphique */}
           <div id="chartTwo" className="-ml-1">
             <ReactApexChart
               options={options}
