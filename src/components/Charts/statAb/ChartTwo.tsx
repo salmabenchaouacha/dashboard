@@ -2,7 +2,7 @@ import { ApexOptions } from 'apexcharts';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import DateFilter from '../DateFilter';
-import OptionsFiltter from '../OptionsFilter';
+import OptionsFiltter from '../ServiceOption';
 const options: ApexOptions = {
   colors: ['#93c5fd','#ccfbf1'],
   chart: {
@@ -100,10 +100,12 @@ const ChartTwo: React.FC = () => {
           </h4>
         </div>
         <div>
-          <div className="relative z-20 inline-block">
-          <OptionsFiltter/>
+        <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
+        
+        <DateFilter/>
+     
           
-          </div>
+         </div>
         </div>
       </div>
 

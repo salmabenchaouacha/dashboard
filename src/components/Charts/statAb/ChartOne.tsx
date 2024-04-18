@@ -157,10 +157,12 @@ const ChartOne: React.FC = () => {
          
         </div>
         <div>
-          <div className="relative z-20 inline-block">
-          <DateFilter/>
-           
-          </div>
+        <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
+        
+        <DateFilter/>
+     
+          
+         </div>
         </div>
       </div>
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
@@ -172,7 +174,7 @@ const ChartOne: React.FC = () => {
             </span>
             <div className="w-full">
               <p className="font-semibold text-indigo-300">Fréquence de facturation quotidienne</p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
+             
             </div>
           </div>
           <div className="flex min-w-100">
@@ -181,7 +183,7 @@ const ChartOne: React.FC = () => {
             </span>
             <div className="w-full">
               <p className="font-semibold text-fuchsia-300">Fréquence de facturation hebdomadaire</p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
+              
             </div>
           </div>
         </div>

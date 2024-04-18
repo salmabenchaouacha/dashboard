@@ -1,7 +1,7 @@
 import { ApexOptions } from 'apexcharts';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-
+import DateFilter from '../DateFilter';
 const BarChart: React.FC = () => {
   const [series, setSeries] = useState([
     {
@@ -58,7 +58,7 @@ const BarChart: React.FC = () => {
       position: 'top',
       horizontalAlign: 'left',
     },
-    colors: ['#c4b5fd', '#fda4af', '#a3e635'],
+    colors: ['#f5d0fe', '#d9f99d'],
   };
 
   return (
@@ -70,26 +70,30 @@ const BarChart: React.FC = () => {
           </h4>
         </div>
         <div>
-          <div className="relative z-20 inline-block">
-          </div>
+        <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
+        
+        <DateFilter/>
+     
+          
+         </div>
         </div>
       </div>
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div className="flex w-full flex-wrap gap-3 sm:gap-5">
           <div className="flex min-w-100">
-            <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-rose-300">
-              <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-rose-300"></span>
+            <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-[#f5d0fe]">
+              <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-[#f5d0fe]"></span>
             </span>
             <div className="w-full">
-              <p className="font-semibold text-rose-300"> Fréquence de facturation quotidienne </p>
+              <p className="font-semibold text-[#f5d0fe]"> Fréquence de facturation quotidienne </p>
             </div>
           </div>
           <div className="flex min-w-100">
-            <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-violet-300">
-              <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-violet-300"></span>
+            <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-[#d9f99d]">
+              <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-[#d9f99d]"></span>
             </span>
             <div className="w-full">
-              <p className="font-semibold text-violet-300">Fréquence de facturation hebdomadaire</p>
+              <p className="font-semibold text-[#d9f99d]">Fréquence de facturation hebdomadaire</p>
             </div>
           </div>
         </div>

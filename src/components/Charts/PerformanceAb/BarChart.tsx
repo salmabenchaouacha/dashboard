@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-
+import DateFilter from '../DateFilter';
 const BarChart = () => {
   const [series, setSeries] = useState([
     {
@@ -80,8 +80,12 @@ const BarChart = () => {
           </h4>
         </div>
         <div>
-          <div className="relative z-20 inline-block">
-          </div>
+        <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
+        
+        <DateFilter/>
+     
+          
+         </div>
         </div>
       </div>
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">

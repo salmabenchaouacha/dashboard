@@ -11,7 +11,7 @@ const options: ApexOptions = {
       position: 'top',
       horizontalAlign: 'left',
     },
-    colors: ['#c4b5fd','#fda4af' ,'#a3e635'],
+    colors: ['#99f6e4'],
    
    
   }
@@ -50,10 +50,12 @@ const TauxLine: React.FC = () => {
           </h4>
         </div>
         <div>
-          <div className="relative z-20 inline-block">
-           <DateFilter/>
-           
-          </div>
+        <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
+        
+        <DateFilter/>
+     
+          
+         </div>
         </div>
         
       </div>

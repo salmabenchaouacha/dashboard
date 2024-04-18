@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
+import DateFilter from '../DateFilter';
 
 const HeatMap = () => {
   const [series, setSeries] = useState([
@@ -32,7 +33,12 @@ const HeatMap = () => {
           </h4>
         </div>
         <div>
-          <div className="relative z-20 inline-block"></div>
+        <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
+        
+        <DateFilter/>
+     
+          
+         </div>
         </div>
       </div>
       <div className="flex w-full flex-wrap gap-3 sm:gap-5">

@@ -1,7 +1,7 @@
 import { ApexOptions } from 'apexcharts';
 import React, { useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
-
+import DateFilter from '../DateFilter';
 const options: ApexOptions = {
   // ... (same options as before)
  
@@ -56,8 +56,12 @@ const LineChart: React.FC = () => {
         </h4>
       </div>
       <div>
-        <div className="relative z-20 inline-block">
-        </div>
+      <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
+        
+        <DateFilter/>
+     
+          
+         </div>
       </div>
     </div>
     <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">

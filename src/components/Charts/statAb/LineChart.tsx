@@ -10,7 +10,7 @@ const options: ApexOptions = {
       position: 'top',
       horizontalAlign: 'left',
     },
-    colors: [ '#a3e635'],
+    colors: [ '#a5f3fc'],
    
    
   }
