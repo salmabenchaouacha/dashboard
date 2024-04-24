@@ -1,81 +1,75 @@
-import { ApexOptions } from 'apexcharts';
-import React, { useState } from 'react';
+import React from 'react';
 import ReactApexChart from 'react-apexcharts';
-import DateFilter from '../DateFilter';
-const options: ApexOptions = {
-  // ... (same options as before)
- 
-    legend: {
-      show: false,
-      position: 'top',
-      horizontalAlign: 'left',
-    },
-    colors: [ '#a5f3fc'],
-   
-   
-  }
- 
+import DateFilter from '../DateFilter'; // Importez le composant DateFilter
 
-interface LineChartState {
-  series: {
-    name: string;
-    data: number[];
-  }[];
-}
+const LineChart = () => {
+  const dates = [
+    [1327359600000,30.95],
+    [1327446000000,31.34],
+    [1327532400000,31.18],
+    [1327618800000,31.05],
+    [1327878000000,32.04],
+    [1327964400000,32.96],
+    [1328050800000,33.28]
+    // Ajoutez vos données ici
+  ];
 
-const LineChart: React.FC = () => {
-
-  const [state, setState] = useState<LineChartState>({
-    series: [
-      {
-        name: 'Le nombre des abonnés',
-        data: [31, 40, 28, 51, 42, 109, 100],
+  const options = {
+    series: [{
+      name: 'XYZ MOTORS',
+      data: dates
+    }],
+    colors: ['#99f6e4'],
+    chart: {
+      type: 'area',
+      stacked: false,
+      height: 350,
+      zoom: {
+        type: 'x',
+        enabled: true,
+        autoScaleYaxis: true
       },
-      
-    ],
-  });
-
-  // ... (same handleReset function as before)
+      toolbar: {
+        autoSelected: 'zoom'
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    markers: {
+      size: 0,
+    },
+   
+   
+    
+    xaxis: {
+      type: 'datetime',
+    },
+    tooltip: {
+      shared: false,
+      y: {
+        formatter: function (val) {
+          return (val / 1000000).toFixed(0)
+        }
+      }
+    },
+    
+  };
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-14">
-      {/* ... (same header as before) */}
-      <div className="mb-4 justify-between gap-4 sm:flex">
-        <div>
-          <h4 className="text-xl font-semibold text-black dark:text-white">
-          Les variations du nombre d'abonnés au fil du temps : 
-          </h4>
-          
-        </div>
-        <div>
-        <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
-        
-         <DateFilter/>
-      
-           
-          </div>
-        </div>
-        
-      </div>
-      <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
-     
-     
-        
-     
-        
-      </div>
-      <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
-        {/* ... (same chart legend as before) */}
-      </div>
-      <div>
-        <div id="chartTwo" className="-ml-5">
-          <ReactApexChart
-            options={options}
-            series={state.series}
-            type="area"
-            height={350}
-          />
-        </div>
+
+<div className="relative">
+  <h4 className="text-xl font-semibold text-black dark:text-white">
+    Les variations du nombre d'abonnés au fil du temps :
+  </h4>
+  <div className="absolute top-5 right-0 mt-4 mr-4">
+    <DateFilter />
+  </div>
+</div>
+
+      <div id="chart">
+        <ReactApexChart options={options} series={options.series} type="area" height={350} />
       </div>
     </div>
   );

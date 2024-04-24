@@ -5,10 +5,11 @@ import ChartTwo from '../components/Charts/statAb/ChartTwo';
 import BarEmplie from '../components/Charts/statAb/BarEmplie';
 import DefaultLayout from '../layout/DefaultLayout';
 
-import HeatMap from '../components/Charts/statAb/heatmap';
+
 import TauxLine from '../components/Charts/statAb/TauxLine';
 
 import ChartOne from '../components/Charts/statAb/ChartOne';
+import Scatter from '../components/Charts/statAb/Scatter';
 
 
 const StatAb: React.FC = () => {
@@ -29,7 +30,9 @@ const StatAb: React.FC = () => {
         <ChartOne/>
       
         <LineChart />
-        <HeatMap/>
+       
+       <Scatter/>
+       
       
         
       </div>

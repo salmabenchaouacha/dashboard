@@ -5,17 +5,17 @@ import DateFilter from '../DateFilter';
 const Mixed = () => {
   const [series, setSeries] = useState([
     {
-      name: 'TEAM A',
+      name: ' Nombre des abonnements ',
       type: 'column',
       data: [23, 11, 22, 27, 13, 22, 37, 21, 44, 22, 30]
     },
     {
-      name: 'TEAM B',
+      name: 'Les revenus',
       type: 'area',
       data: [44, 55, 41, 67, 22, 43, 21, 41, 56, 27, 43]
     },
     {
-      name: 'TEAM C',
+      name: 'Les taux de rétention',
       type: 'line',
       data: [30, 25, 36, 30, 45, 35, 64, 52, 59, 36, 39]
     },
@@ -32,14 +32,11 @@ const Mixed = () => {
       width: [0, 2,5],
       curve: 'smooth'
     },
-    
-  
     plotOptions: {
       bar: {
         columnWidth: '50%'
       }
     },
-    
     fill: {
       opacity: [0.85, 0.25, 1],
       gradient: {
@@ -51,6 +48,7 @@ const Mixed = () => {
         stops: [0, 100, 100, 100]
       }
     },
+    colors: ["#fde047","#e879f9","#a3e635"], // Changer les couleurs ici
     labels: ['01/01/2003', '02/01/2003', '03/01/2003', '04/01/2003', '05/01/2003', '06/01/2003', '07/01/2003', '08/01/2003', '09/01/2003', '10/01/2003', '11/01/2003'],
     markers: {
       size: 0
@@ -60,7 +58,7 @@ const Mixed = () => {
     },
     yaxis: {
       title: {
-        text: 'Points',
+        text: '',
       },
       min: 0
     },
@@ -94,7 +92,6 @@ const Mixed = () => {
           ...prevSeries[2],
           data: prevSeries[2].data.map(() => Math.floor(Math.random() * 100)),
         }
-        
       ]);
     };
     handleReset();
@@ -109,31 +106,18 @@ const Mixed = () => {
           </h4>
         </div>
         <div>
-          <div className="relative z-20 inline-block">
-            <DateFilter/>
-          </div>
+        <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
+        
+        <DateFilter/>
+     
+          
+         </div>
         </div>
       </div>
       <div className="flex flex-wrap items-start justify-between gap-3 sm:flex-nowrap">
         <div className="flex w-full flex-wrap gap-3 sm:gap-5">
-          <div className="flex min-w-100">
-            <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-indigo-300">
-              <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-indigo-300"></span>
-            </span>
-            <div className="w-full">
-              <p className="font-semibold text-indigo-300">Fréquence de facturation quotidienne</p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
-            </div>
-          </div>
-          <div className="flex min-w-100">
-            <span className="mt-1 mr-2 flex h-4 w-full max-w-4 items-center justify-center rounded-full border border-fuchsia-300">
-              <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-fuchsia-300"></span>
-            </span>
-            <div className="w-full">
-              <p className="font-semibold text-fuchsia-300">Fréquence de facturation hebdomadaire</p>
-              <p className="text-sm font-medium">12.04.2022 - 12.05.2022</p>
-            </div>
-          </div>
+         
+         
         </div>
       </div>
       <div>

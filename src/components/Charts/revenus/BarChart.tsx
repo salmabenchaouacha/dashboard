@@ -5,11 +5,11 @@ import DateFilter from '../DateFilter';
 const BarChart: React.FC = () => {
   const [series, setSeries] = useState([
     {
-      name: 'Le taux de rétention des abonnés quotidiens ',
+      name: ' ARPU ',
       data: [44]
     },
     {
-      name: '  Le taux de rétention des abonnés hebdomadaires',
+      name: '  LTV',
       data: [76]
     },
    
@@ -40,7 +40,7 @@ const BarChart: React.FC = () => {
     },
     yaxis: {
       title: {
-        text: 'DT'
+        text: ''
       }
     },
     fill: {
@@ -66,7 +66,7 @@ const BarChart: React.FC = () => {
       <div className="mb-4 justify-between gap-4 sm:flex">
         <div>
           <h4 className="text-xl font-semibold text-black dark:text-white">
-          Les taux de rétention des abonnés quotidiens et hebdomadaires:
+          Les mesures: ARPU et LTV 
           </h4>
         </div>
         <div>
@@ -85,7 +85,7 @@ const BarChart: React.FC = () => {
               <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-[#f5d0fe]"></span>
             </span>
             <div className="w-full">
-              <p className="font-semibold text-[#f5d0fe]"> Fréquence de facturation quotidienne </p>
+              <p className="font-semibold text-[#f5d0fe]">   ARPU: le revenu moyen par utilisateur   </p>
             </div>
           </div>
           <div className="flex min-w-100">
@@ -93,7 +93,7 @@ const BarChart: React.FC = () => {
               <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-[#d9f99d]"></span>
             </span>
             <div className="w-full">
-              <p className="font-semibold text-[#d9f99d]">Fréquence de facturation hebdomadaire</p>
+              <p className="font-semibold text-[#d9f99d]"> LTV: la valeur à vie</p>
             </div>
           </div>
         </div>

@@ -5,9 +5,9 @@ import LineR from '../components/Charts/revenus/LineR';
 
 import DefaultLayout from '../layout/DefaultLayout';
 import BarChart from '../components/Charts/revenus/BarChart';
-import HeatmapLTV from '../components/Charts/revenus/HeatmaJ';
-import HeatmapJ from '../components/Charts/revenus/HeatmaJ';
-import HeatmapH from '../components/Charts/revenus/HeatmaH';
+
+import ScatterJ from '../components/Charts/revenus/ScatterJ';
+import TableOne from '../components/Tables/TableOne';
 
 
 
@@ -26,8 +26,11 @@ const ECommerce: React.FC = () => {
        
        <LineR/>
        <BarChart/>
-       <HeatmapJ/>
-       <HeatmapH/>
+       <ScatterJ/>
+       <div className="col-span-12 xl:col-span-8">
+          <TableOne />
+        </div>
+      
 
       </div>
     </DefaultLayout>
