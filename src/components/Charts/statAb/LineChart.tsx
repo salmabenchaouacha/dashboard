@@ -16,7 +16,7 @@ const LineChart = () => {
 
   const options = {
     series: [{
-      name: 'XYZ MOTORS',
+      name: ' Le nombre des abonnés',
       data: dates
     }],
     colors: ['#99f6e4'],
@@ -49,7 +49,7 @@ const LineChart = () => {
       shared: false,
       y: {
         formatter: function (val) {
-          return (val / 1000000).toFixed(0)
+          return val.toFixed(2)
         }
       }
     },

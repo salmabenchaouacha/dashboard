@@ -1,26 +1,33 @@
+// ServiceOption.js
 import React, { useState } from 'react';
 
-const ServiceOption = () => {
-  const [selectedOption, setSelectedOption] = useState('');
+const ServiceOption = ({ handleServiceIdChange }) => {
+  const [serviceId, setServiceId] = useState('');
 
   const handleSelect = (value) => {
-    setSelectedOption(value);
+    setServiceId(value); // Mettre à jour serviceId dans le composant ServiceOption
+    handleServiceIdChange(value); // Appeler la fonction de mise à jour de serviceId du composant parent
     console.log("Option sélectionnée :", value);
   };
-
-  const options = ['Tawer', 'Mou7a9i9', 'Esports', 'Rafi9ni'];
+  
+  const options = [
+    { value: '', label: 'Choisir le service' },
+    { value: '1', label: 'Esports' },
+    { value: '6', label: 'RafikniPlus' },
+    { value: '7', label: 'Tawer' },
+    { value: '8', label: 'Almouhakik' }
+  ];
 
   return (
     <div>
       <div>
         <select
-          value={selectedOption}
+          value={serviceId}
           onChange={(e) => handleSelect(e.target.value)}
-          style={{ backgroundColor: 'black'  , color:'lightgray'}} // Définir le style en ligne pour changer le fond et la couleur du texte
+          style={{ backgroundColor: 'black', color: 'lightgray' }}
         >
-          <option value="">Choisir le service</option>
           {options.map((option, index) => (
-            <option key={index} value={option}>{option}</option>
+            <option key={index} value={option.value}>{option.label}</option>
           ))}
         </select>
       </div>

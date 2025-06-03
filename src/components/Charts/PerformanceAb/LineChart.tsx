@@ -88,7 +88,8 @@ const LineChart: React.FC = () => {
             <span className="block h-2.5 w-full max-w-2.5 rounded-full bg-[#f0abfc]"></span>
           </span>
           <div className="w-full">
-            <p className="font-semibold text-[#f0abfc]">   Les taux de rétention</p>
+            <p className="font-semibold text-[#f0abfc]">   
+            </p>
           </div>
         </div>
       </div>

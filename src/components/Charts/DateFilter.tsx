@@ -25,14 +25,13 @@ const DateFilter = ({ onDateRangeSelect }) => {
 
   const handleDateChange = (e) => {
     const { name, value } = e.target;
-    setDateRange({ ...dateRange, [name]: value });
-    if (dateRange.startDate !== '' && dateRange.endDate !== '') {
-      handleSubmit(); // Appel de handleSubmit lorsque les deux dates sont saisies
+    const newDateRange = { ...dateRange, [name]: value };
+    setDateRange(newDateRange);
+    
+    // Vérifiez si les deux dates sont présentes
+    if (newDateRange.startDate !== '' && newDateRange.endDate !== '') {
+      onDateRangeSelect(newDateRange);
     }
-  };
-
-  const handleSubmit = () => {
-    onDateRangeSelect(dateRange);
   };
 
   return (

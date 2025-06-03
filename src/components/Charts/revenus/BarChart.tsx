@@ -1,21 +1,25 @@
 import { ApexOptions } from 'apexcharts';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import DateFilter from '../DateFilter';
-const BarChart: React.FC = () => {
-  const [series, setSeries] = useState([
-    {
-      name: ' ARPU ',
-      data: [44]
-    },
-    {
-      name: '  LTV',
-      data: [76]
-    },
-   
-  ]);
+import {useGetBarChartStats} from '@/hooks/api/stats.api.ts';
+import { format, subDays } from 'date-fns';
 
-  const options: ApexOptions = {
+interface BarChartState {
+  series: {
+    name: string;
+    data: number[];
+  }[];
+}
+
+type BarChartVariables = {
+  start_date: string;
+  end_date: string;
+  service_id: string;
+};
+const BarChart: React.FC = () => {
+
+  const [options, setOptions] = useState<ApexOptions>({
     chart: {
       type: 'bar',
       height: 350
@@ -36,7 +40,7 @@ const BarChart: React.FC = () => {
       colors: ['transparent']
     },
     xaxis: {
-      categories: [''],
+      categories: [],
     },
     yaxis: {
       title: {
@@ -58,8 +62,70 @@ const BarChart: React.FC = () => {
       position: 'top',
       horizontalAlign: 'left',
     },
+    
     colors: ['#f5d0fe', '#d9f99d'],
-  };
+    
+  })
+  const [queryParams, setQueryParams] = useState<BarChartVariables>({
+    start_date: format(subDays(new Date(), 7), 'yyyy-MM-dd'),
+    end_date: format(new Date(), 'yyyy-MM-dd'),
+    service_id: '7',
+});
+  
+const handleDateRangeSelect = (dateRange: any) => {
+  const formattedStartDate = format(new Date(dateRange.startDate), 'yyyy-MM-dd');
+  const formattedEndDate = format(new Date(dateRange.endDate), 'yyyy-MM-dd');
+  setQueryParams({
+    ...queryParams,
+    start_date: formattedStartDate,
+    end_date: formattedEndDate
+  });
+};
+const getBarChartData = useGetBarChartStats(
+  queryParams
+);
+const [state, setState] = useState<BarChartState>({
+  series: [
+  {
+    name: '  ',
+    data: [],
+  },
+  {
+    name: ' ',
+    data: [],
+  },
+ 
+]});
+
+const handleReset = () => {
+  setState((prevState) => ({
+    ...prevState,
+  }));
+};
+handleReset; 
+
+useEffect(() => {
+  if (getBarChartData?.isSuccess && getBarChartData?.data) {
+    const arpuValue = getBarChartData.data.data['ARPU'];
+    const ltvValue = getBarChartData.data.data['LTV'];
+    const formattedData = [
+      { name: 'ARPU', data: [arpuValue] },
+      { name: 'LTV', data: [ltvValue] }
+    ];
+
+    setState({
+      series: formattedData,
+    });
+
+    setOptions(prevOptions => ({
+      ...prevOptions,
+      xaxis: {
+        categories: [''],
+      },
+      colors: ['#f5d0fe', '#d9f99d'],
+    }));
+  }
+}, [getBarChartData?.isSuccess, getBarChartData?.data]);
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white px-5 pt-7.5 pb-5 shadow-default dark:border-strokedark dark:bg-boxdark sm:px-7.5 xl:col-span-12">
@@ -71,8 +137,7 @@ const BarChart: React.FC = () => {
         </div>
         <div>
         <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
-        
-        <DateFilter/>
+        <DateFilter onDateRangeSelect={handleDateRangeSelect} />
      
           
          </div>
@@ -104,7 +169,7 @@ const BarChart: React.FC = () => {
           <div id="chartTwo" className="-ml-1">
             <ReactApexChart
               options={options}
-              series={series}
+              series={state.series}
               type="bar"
               height={350}
             />

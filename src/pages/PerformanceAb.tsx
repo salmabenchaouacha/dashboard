@@ -6,13 +6,16 @@ import DefaultLayout from '../layout/DefaultLayout';
 import BarChart from '../components/Charts/PerformanceAb/BarChart';
 
 import Mixed from '../components/Charts/PerformanceAb/Mixed';
-import Mixte from '../components/Charts/PerformanceAb/Mixte';
+
+import PageTitle from '@/components/PageTitle';
 
 
 
-
-const ECommerce: React.FC = () => {
+const ECommerce = () => {
   return (
+    <>
+   <PageTitle title="Retention et desabonnement| TailAdmin - Tailwind CSS Admin Dashboard Template" />
+
     <DefaultLayout>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
        
@@ -30,6 +33,7 @@ const ECommerce: React.FC = () => {
 
       </div>
     </DefaultLayout>
+    </>
   );
 };
 

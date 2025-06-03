@@ -1,9 +1,26 @@
 import { ApexOptions } from 'apexcharts';
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import ReactApexChart from 'react-apexcharts';
 import DateFilter from '../DateFilter';
-import OptionsFiltter from '../ServiceOption';
-const options: ApexOptions = {
+import {useGetChartTwoStats} from '@/hooks/api/stats.api.ts';
+import { format,subDays  } from 'date-fns';
+
+
+
+interface ChartTwoState {
+  series: {
+    name: string;
+    data: number[];
+  }[];
+}
+type ChartTwoVariables = {
+  start_date: string;
+  end_date: string;
+  service_id: string;
+};
+
+const ChartTwo: React.FC = () => {
+  const [options, setOptions] = useState<ApexOptions>({
   colors: ['#93c5fd','#ccfbf1'],
   chart: {
     fontFamily: 'Satoshi, sans-serif',
@@ -46,8 +63,7 @@ const options: ApexOptions = {
   },
 
   xaxis: {
-    
-    categories: [ ' le nombre total des abonnés ', 'les nouveaux abonnements','les annulations' ],
+    categories: [],
   },
   legend: {
     position: 'top',
@@ -63,22 +79,31 @@ const options: ApexOptions = {
   fill: {
     opacity: 1,
   },
-};
-
-interface ChartTwoState {
-  series: {
-    name: string;
-    data: number[];
-  }[];
-}
-
-const ChartTwo: React.FC = () => {
+})
+  const [queryParams, setQueryParams] = useState<ChartTwoVariables>({
+      start_date: format(subDays(new Date(), 7), 'yyyy-MM-dd'),
+      end_date: format(new Date(), 'yyyy-MM-dd'),
+      service_id: '7',
+  });
+    
+  const handleDateRangeSelect = (dateRange: any) => {
+    const formattedStartDate = format(new Date(dateRange.startDate), 'yyyy-MM-dd');
+    const formattedEndDate = format(new Date(dateRange.endDate), 'yyyy-MM-dd');
+    setQueryParams({
+      ...queryParams,
+      start_date: formattedStartDate,
+      end_date: formattedEndDate
+    });
+  };
+  const getChartTwoData = useGetChartTwoStats(
+    queryParams
+  );
+ 
   const [state, setState] = useState<ChartTwoState>({
     series: [
-    
       {
         name: '',
-        data: [13, 23, 20],
+        data: [],
       },
     ],
   });
@@ -89,6 +114,26 @@ const ChartTwo: React.FC = () => {
     }));
   };
   handleReset;  
+
+   useEffect(() => {
+    if (getChartTwoData?.isSuccess) {
+      setState(prevState => ({
+        ...prevState,
+        series: [
+          {
+            name: '',
+            data: getChartTwoData?.data?.data,
+          },
+        ]
+      }));
+      setOptions(prevOptions => ({
+        ...prevOptions,
+        xaxis: {
+          categories: getChartTwoData?.data.label,
+        },
+      }));
+    }
+  }, [queryParams,getChartTwoData?.isSuccess]);
 
   return (
     <div className="col-span-12 rounded-sm border border-stroke bg-white p-7.5 shadow-default dark:border-strokedark dark:bg-boxdark xl:col-span-14">
@@ -102,23 +147,24 @@ const ChartTwo: React.FC = () => {
         <div>
         <div className="relative z-20 inline-block" style={{ top: '20px',left: '10px' }}>
         
-        <DateFilter/>
+        <DateFilter onDateRangeSelect={handleDateRangeSelect} />
      
           
          </div>
+         
         </div>
       </div>
 
       <div>
       
         <div id="chartTwo" className="-ml-5 -mb-9">
-        
-          <ReactApexChart
+        <ReactApexChart
             options={options}
             series={state.series}
             type="bar"
             height={350}
           />
+        
           </div>
         </div>
       
@@ -126,5 +172,6 @@ const ChartTwo: React.FC = () => {
     
   );
 };
+
 
 export default ChartTwo;

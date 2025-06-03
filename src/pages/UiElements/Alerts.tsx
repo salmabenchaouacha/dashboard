@@ -1,8 +1,12 @@
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
+import PageTitle from '@/components/PageTitle';
 
 const Alerts = () => {
   return (
+    <>
+    <PageTitle title="Alerts | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+
     <DefaultLayout>
       <Breadcrumb pageName="Alerts" />
 
@@ -93,6 +97,7 @@ const Alerts = () => {
         </div>
       </div>
     </DefaultLayout>
+    </>
   );
 };
 

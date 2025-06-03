@@ -2,9 +2,12 @@ import { Link } from 'react-router-dom';
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import SelectGroupOne from '../../components/Forms/SelectGroup/SelectGroupOne';
 import DefaultLayout from '../../layout/DefaultLayout';
+import PageTitle from '@/components/PageTitle';
 
 const FormLayout = () => {
   return (
+    <>
+    <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
     <DefaultLayout>
       <Breadcrumb pageName="Form Layout" />
 
@@ -223,6 +226,7 @@ const FormLayout = () => {
         </div>
       </div>
     </DefaultLayout>
+    </>
   );
 };
 

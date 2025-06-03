@@ -1,22 +1,12 @@
-import { useEffect, useState } from 'react';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { useEffect, useState,useContext } from 'react';
+import { Route, Routes, useLocation,Navigate } from 'react-router-dom';
 
 import Loader from './common/Loader';
-import PageTitle from './components/PageTitle';
-import SignIn from './pages/Authentication/SignIn';
-import SignUp from './pages/Authentication/SignUp';
-import PerformanceAb from './pages/PerformanceAb';
-import Chart from './pages/Chart';
-import Retention from './pages/Retention';
+import authCtx from "./stores/auth/AuthContextProvider";
+import routes from "./routes";
+import useScrollToTop from "./hooks/useScrollToTop";
+import useAxiosInterceptors from "./hooks/useAxiosInterceptors";
 
-import FormLayout from './pages/Form/FormLayout';
-import Profile from './pages/Profile';
-import Revenus from './pages/Revenus';
-import StatAb from './pages/StatAb';
-import Settings from './pages/Settings';
-import Tables from './pages/Tables';
-import Alerts from './pages/UiElements/Alerts';
-import Buttons from './pages/UiElements/Buttons';
 
 function App() {
   const [loading, setLoading] = useState<boolean>(true);
@@ -30,132 +20,46 @@ function App() {
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
+  useScrollToTop();
+  const { authState } = useContext(authCtx);
+  const adminRoutes = routes.filter((route) => route.layout === "private");
+  const guestRoutes = routes.filter((route) => route.layout === "guest");
+  useAxiosInterceptors();
+
   return loading ? (
     <Loader />
   ) : (
     <>
       <Routes>
         <Route
-           
-          index
-          path="/StatAb"
-          element={
-            <>
-              <PageTitle title="StatAb Dashboard | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <StatAb />
-            </>
-          }
-        />
-     
-     
-         <Route
-          path="/Revenus"
-          element={
-            <>
-              <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Revenus />
-            </>
-          }
-        />
-        <Route
-          path="/profile"
-          element={
-            <>
-              <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Profile />
-            </>
-          }
-        />
-        <Route
-          path="/Retention"
-          element={
-            <>
-              <PageTitle title="Retention et desabonnement| TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Retention />
-            </>
-          }
-        />
-         <Route
-          path="/PerformanceAb"
-          element={
-            <>
-              <PageTitle title="Retention et desabonnement| TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <PerformanceAb />
-            </>
-          }
-        />
-        <Route
-          path="/forms/form-layout"
-          element={
-            <>
-              <PageTitle title="Form Layout | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <FormLayout />
-            </>
-          }
-        />
-        <Route
-          path="/tables"
-          element={
-            <>
-              <PageTitle title="Tables | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Tables />
-            </>
-          }
-        />
-        <Route
-          path="/settings"
-          element={
-            <>
-              <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Settings />
-            </>
-          }
-        />
-        <Route
-          path="/chart"
-          element={
-            <>
-              <PageTitle title="Basic Chart | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Chart />
-            </>
-          }
-        />
-        <Route
-          path="/ui/alerts"
-          element={
-            <>
-              <PageTitle title="Alerts | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Alerts />
-            </>
-          }
-        />
-        <Route
-          path="/ui/buttons"
-          element={
-            <>
-              <PageTitle title="Buttons | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <Buttons />
-            </>
-          }
-        />
-        <Route
           path="/"
           element={
-            <>
-              <PageTitle title="Signin | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <SignIn />
-            </>
+            <Navigate to={authState.isLoggedIn ? location.pathname : "/login"} />
           }
         />
-        <Route
-          path="/auth/signup"
-          element={
-            <>
-              <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
-              <SignUp />
-            </>
-          }
-        />
+        {!authState.isLoggedIn && (
+          <Route>
+            {guestRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<route.component />}
+              />
+            ))}
+          </Route>
+        )}
+
+        {authState.isLoggedIn && (
+          <Route>
+            {adminRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={<route.component />}
+              />
+            ))}
+          </Route>
+        )}
       </Routes>
     </>
   );

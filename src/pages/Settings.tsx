@@ -1,9 +1,13 @@
 import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 import userThree from '../images/user/user-03.png';
 import DefaultLayout from '../layout/DefaultLayout';
+import PageTitle from '@/components/PageTitle';
 
 const Settings = () => {
   return (
+    <>
+     <PageTitle title="Settings | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+
     <DefaultLayout>
       <div className="mx-auto max-w-270">
         <Breadcrumb pageName="Settings" />
@@ -306,6 +310,7 @@ const Settings = () => {
         </div>
       </div>
     </DefaultLayout>
+    </>
   );
 };
 

@@ -8,11 +8,15 @@ import BarChart from '../components/Charts/revenus/BarChart';
 
 import ScatterJ from '../components/Charts/revenus/ScatterJ';
 import TableOne from '../components/Tables/TableOne';
+import PageTitle from '@/components/PageTitle';
 
 
 
-const ECommerce: React.FC = () => {
+const ECommerce = () => {
   return (
+    <>
+    <PageTitle title="Calendar | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+
     <DefaultLayout>
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6 xl:grid-cols-4 2xl:gap-7.5">
        
@@ -28,12 +32,13 @@ const ECommerce: React.FC = () => {
        <BarChart/>
        <ScatterJ/>
        <div className="col-span-12 xl:col-span-8">
-          <TableOne />
+         
         </div>
       
 
       </div>
     </DefaultLayout>
+    </>
   );
 };
 

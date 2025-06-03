@@ -123,7 +123,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/revenus"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('calendar') &&
+                    pathname.includes('revenus') &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
@@ -140,14 +140,14 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                   }`}
                 >
                   
-                  La rétention le désabonnement
+                  La rétention et le désabonnement
                 </NavLink>
               </li>
               <li>
                 <NavLink
-                  to=""
+                  to="/Engagement"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('calendar') &&
+                    pathname.includes('Engagement') &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
@@ -160,7 +160,7 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
                 <NavLink
                   to="/PerformanceAb"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('calendar') &&
+                    pathname.includes('PerformanceAb') &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
@@ -170,14 +170,26 @@ const Sidebar = ({ sidebarOpen, setSidebarOpen }: SidebarProps) => {
               </li>
               <li>
                 <NavLink
-                  to=""
+                  to="/SupportClient"
                   className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
-                    pathname.includes('calendar') &&
+                    pathname.includes('SupportClient') &&
                     'bg-graydark dark:bg-meta-4'
                   }`}
                 >
                   
                   Le support client et la satisfaction
+                </NavLink>
+              </li>
+              <li>
+                <NavLink
+                  to="/Prediction"
+                  className={`group relative flex items-center gap-2.5 rounded-sm py-2 px-4 font-medium text-bodydark1 duration-300 ease-in-out hover:bg-graydark dark:hover:bg-meta-4 ${
+                    pathname.includes('Prediction') &&
+                    'bg-graydark dark:bg-meta-4'
+                  }`}
+                >
+                  
+                  Prédiction des actions fultures des utilisateurs
                 </NavLink>
               </li>
               {/* <!-- Menu Item Calendar --> */}

@@ -3,10 +3,13 @@ import { Link } from 'react-router-dom';
 
 import LogoDark from '../../images/logo/logo-dark.svg';
 import Logo from '../../images/logo/logo.svg';
+import PageTitle from '@/components/PageTitle';
 
-
-const SignUp: React.FC = () => {
+const SignUp = () => {
   return (
+    <>
+    <PageTitle title="Signup | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+
     <div>
     
 
@@ -352,6 +355,7 @@ const SignUp: React.FC = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

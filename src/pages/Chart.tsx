@@ -4,9 +4,12 @@ import ChartOne from '../components/Charts/statAb/ChartOne';
 import ChartThree from '../components/Charts/statAb/ChartThree';
 import ChartTwo from '../components/Charts/statAb/ChartTwo';
 import DefaultLayout from '../layout/DefaultLayout';
+import PageTitle from '@/components/PageTitle';
 
-const Chart: React.FC = () => {
+const Chart = () => {
   return (
+    <>
+    <PageTitle title="Basic Chart | TailAdmin - Tailwind CSS Admin Dashboard Template" />
     <DefaultLayout>
       <Breadcrumb pageName="Chart" />
 
@@ -16,6 +19,7 @@ const Chart: React.FC = () => {
         <ChartThree />
       </div>
     </DefaultLayout>
+    </>
   );
 };
 

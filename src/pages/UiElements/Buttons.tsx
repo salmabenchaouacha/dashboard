@@ -2,9 +2,13 @@ import { Link } from 'react-router-dom';
 
 import Breadcrumb from '../../components/Breadcrumbs/Breadcrumb';
 import DefaultLayout from '../../layout/DefaultLayout';
+import PageTitle from '@/components/PageTitle';
 
 const Buttons = () => {
   return (
+    <>
+    <PageTitle title="Buttons | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+
     <DefaultLayout>
       <Breadcrumb pageName="Buttons" />
 
@@ -466,6 +470,7 @@ const Buttons = () => {
         </div>
       </div>
     </DefaultLayout>
+    </>
   );
 };
 

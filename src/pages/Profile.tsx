@@ -2,10 +2,13 @@ import Breadcrumb from '../components/Breadcrumbs/Breadcrumb';
 import DefaultLayout from '../layout/DefaultLayout';
 import CoverOne from '../images/cover/cover-01.png';
 import userSix from '../images/user/user-06.png';
-
+import PageTitle from '@/components/PageTitle';
 
 const Profile = () => {
   return (
+    <>
+    <PageTitle title="Profile | TailAdmin - Tailwind CSS Admin Dashboard Template" />
+
     <DefaultLayout>
       <Breadcrumb pageName="Profile" />
 
@@ -111,6 +114,7 @@ const Profile = () => {
         </div>
       </div>
     </DefaultLayout>
+    </>
   );
 };
 

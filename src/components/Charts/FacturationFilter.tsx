@@ -1,32 +1,28 @@
 import React, { useState } from 'react';
 
-const FacturationFilter = () => {
+const FacturationFilter = ({ onOptionSelected }: any) => {
   const [selectedOption, setSelectedOption] = useState('');
 
-  const handleSelect = (value) => {
+  // This function is called when the user selects an option from the dropdown
+  const handleSelect = (value:any) => {
     setSelectedOption(value);
-    // Vous pouvez effectuer des actions en fonction de l'option sélectionnée, comme filtrer les données
-    console.log("Option sélectionnée :", value);
+    onOptionSelected(value);  // Notify the parent component of the selection
   };
 
-  const options = [ 'Frequence de facturation quotidienne', ' Frequence de facturation hepdomadaire'];
+  // List of options for the dropdown
+  const options = [
+    {label:'Frequence de facturation quotidienne', value:'1'},
+    {label:'Frequence de facturation hebdomadaire', value:'7'},
+  ];
 
   return (
     <div>
-     
-      <div>
-      
-        <select value={selectedOption} onChange={(e) => handleSelect(e.target.value)}>
-          <option value="">Select an option</option>
-          {options.map((option, index) => (
-            <option key={index} value={option}>{option}</option>
-          ))}
-        </select>
-      </div>
-      <div>
-        
-      </div>
-      {/* Vous pouvez rendre d'autres composants ou afficher des données filtrées en fonction de l'option sélectionnée */}
+      <select value={selectedOption} onChange={(e) => handleSelect(e.target.value)}>
+        <option >Selectionner la fréquence de facturation</option>
+        {options.map((option, index) => (
+          <option key={index} value={option?.value}>{option?.label}</option>
+        ))}
+      </select>
     </div>
   );
 };
